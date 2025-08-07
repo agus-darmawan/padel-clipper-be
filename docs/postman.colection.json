@@ -1,0 +1,512 @@
+{
+  "info": {
+    "_postman_id": "patrol-be-api-collection",
+    "name": "Patrol BE API",
+    "description": "Complete API collection for testing Patrol BE endpoints including Courts, Booking Hours, and Clips management",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "patrol-be-api"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "item": [
+        {
+          "name": "API Root - Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/",
+              "host": ["{{base_url}}"],
+              "path": [""]
+            },
+            "description": "Basic health check endpoint to verify API is running"
+          },
+          "response": []
+        }
+      ],
+      "description": "Health check endpoints"
+    },
+    {
+      "name": "Courts",
+      "item": [
+        {
+          "name": "Create Court",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Court A\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/courts",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts"]
+            },
+            "description": "Create a new court with a unique name"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Courts",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/courts",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts"]
+            },
+            "description": "Retrieve all courts ordered by creation date (newest first)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Court by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/courts/{{court_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts", "{{court_id}}"]
+            },
+            "description": "Retrieve a specific court by its ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Court",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Court A - Updated\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/courts/{{court_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts", "{{court_id}}"]
+            },
+            "description": "Update a court's information by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Court",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/courts/{{court_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts", "{{court_id}}"]
+            },
+            "description": "Delete a court by ID"
+          },
+          "response": []
+        }
+      ],
+      "description": "Court management endpoints"
+    },
+    {
+      "name": "Booking Hours",
+      "item": [
+        {
+          "name": "Create Booking Hour",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courtId\": {{court_id}},\n  \"dateStart\": \"2024-08-07T09:00:00.000Z\",\n  \"dateEnd\": \"2024-08-07T10:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/booking-hours",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "booking-hours"]
+            },
+            "description": "Create a new booking hour for a specific court"
+          },
+          "response": []
+        },
+        {
+          "name": "Get All Booking Hours",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/booking-hours",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "booking-hours"]
+            },
+            "description": "Retrieve all booking hours with court information, ordered by start date"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Booking Hour by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/booking-hours/{{booking_hour_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "booking-hours", "{{booking_hour_id}}"]
+            },
+            "description": "Retrieve a specific booking hour by its ID with court information"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Booking Hour",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dateStart\": \"2024-08-07T10:00:00.000Z\",\n  \"dateEnd\": \"2024-08-07T11:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/booking-hours/{{booking_hour_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "booking-hours", "{{booking_hour_id}}"]
+            },
+            "description": "Update a booking hour's time slots by ID"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Booking Hour",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/booking-hours/{{booking_hour_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "booking-hours", "{{booking_hour_id}}"]
+            },
+            "description": "Delete a booking hour by ID"
+          },
+          "response": []
+        }
+      ],
+      "description": "Booking hour management endpoints"
+    },
+    {
+      "name": "Clips",
+      "item": [
+        {
+          "name": "Upload Clip",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "video",
+                  "type": "file",
+                  "src": [],
+                  "description": "Video file to upload (mp4, webm, ogg)"
+                },
+                {
+                  "key": "bookingHourId",
+                  "value": "{{booking_hour_id}}",
+                  "type": "text",
+                  "description": "ID of the booking hour this clip belongs to"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/clips/upload",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "clips", "upload"]
+            },
+            "description": "Upload a video clip for a specific booking hour. Accepts mp4, webm, ogg formats up to 5MB."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Clips by Booking Hour",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/clips/bookingHour/{{booking_hour_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "clips", "bookingHour", "{{booking_hour_id}}"]
+            },
+            "description": "Retrieve all clips for a specific booking hour, ordered by creation date (newest first)"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Clip by Court and ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/clips/court/{{court_id}}/clipp/{{clip_id}}",
+              "host": ["{{base_url}}"],
+              "path": [
+                "v1",
+                "clips",
+                "court",
+                "{{court_id}}",
+                "clipp",
+                "{{clip_id}}"
+              ]
+            },
+            "description": "Retrieve a specific clip by court ID and clip ID with booking hour information"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Clip by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/clips/clipp/{{clip_id}}",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "clips", "clipp", "{{clip_id}}"]
+            },
+            "description": "Retrieve a specific clip by its ID"
+          },
+          "response": []
+        }
+      ],
+      "description": "Clip management endpoints for video uploads and retrieval"
+    },
+    {
+      "name": "Static Files",
+      "item": [
+        {
+          "name": "Access Uploaded Video",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/uploads/videos/{{video_filename}}",
+              "host": ["{{base_url}}"],
+              "path": ["uploads", "videos", "{{video_filename}}"]
+            },
+            "description": "Access uploaded video files directly via static file serving"
+          },
+          "response": []
+        }
+      ],
+      "description": "Static file access endpoints"
+    },
+    {
+      "name": "Error Cases",
+      "item": [
+        {
+          "name": "404 - Not Found Route",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/non-existent-route",
+              "host": ["{{base_url}}"],
+              "path": ["non-existent-route"]
+            },
+            "description": "Test 404 error handling for non-existent routes"
+          },
+          "response": []
+        },
+        {
+          "name": "400 - Invalid Court Creation",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"AB\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/courts",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts"]
+            },
+            "description": "Test validation error with court name too short (less than 3 characters)"
+          },
+          "response": []
+        },
+        {
+          "name": "400 - Invalid Booking Hour",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"courtId\": 999999,\n  \"dateStart\": \"2024-08-07T10:00:00.000Z\",\n  \"dateEnd\": \"2024-08-07T09:00:00.000Z\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/v1/booking-hours",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "booking-hours"]
+            },
+            "description": "Test validation error with non-existent court ID and invalid date range"
+          },
+          "response": []
+        },
+        {
+          "name": "404 - Non-existent Court",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/v1/courts/999999",
+              "host": ["{{base_url}}"],
+              "path": ["v1", "courts", "999999"]
+            },
+            "description": "Test 404 error for non-existent court ID"
+          },
+          "response": []
+        }
+      ],
+      "description": "Test cases for various error scenarios"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Set dynamic timestamp for date fields",
+          "const now = new Date();",
+          "const startTime = new Date(now.getTime() + 24 * 60 * 60 * 1000); // Tomorrow",
+          "const endTime = new Date(startTime.getTime() + 60 * 60 * 1000); // 1 hour later",
+          "",
+          "pm.globals.set('current_date_start', startTime.toISOString());",
+          "pm.globals.set('current_date_end', endTime.toISOString());"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Common test assertions",
+          "pm.test('Response time is less than 2000ms', function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(2000);",
+          "});",
+          "",
+          "pm.test('Response has proper JSON structure', function () {",
+          "    pm.response.to.be.json;",
+          "});",
+          "",
+          "// Extract IDs for subsequent requests",
+          "if (pm.response.code === 201 || pm.response.code === 200) {",
+          "    const responseJson = pm.response.json();",
+          "    ",
+          "    if (responseJson.data && responseJson.data.id) {",
+          "        const endpoint = pm.request.url.getPath().split('/')[2];",
+          "        ",
+          "        if (endpoint === 'courts') {",
+          "            pm.globals.set('court_id', responseJson.data.id);",
+          "        } else if (endpoint === 'booking-hours') {",
+          "            pm.globals.set('booking_hour_id', responseJson.data.id);",
+          "        } else if (endpoint === 'clips') {",
+          "            pm.globals.set('clip_id', responseJson.data.id);",
+          "        }",
+          "    }",
+          "}"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "description": "Base URL for the Patrol BE API"
+    },
+    {
+      "key": "court_id",
+      "value": "1",
+      "description": "ID of a court for testing"
+    },
+    {
+      "key": "booking_hour_id",
+      "value": "1",
+      "description": "ID of a booking hour for testing"
+    },
+    {
+      "key": "clip_id",
+      "value": "1",
+      "description": "ID of a clip for testing"
+    },
+    {
+      "key": "video_filename",
+      "value": "sample-video.mp4",
+      "description": "Filename of an uploaded video"
+    }
+  ]
+}
