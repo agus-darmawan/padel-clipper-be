@@ -54,7 +54,35 @@ export const syncDatabase = async () => {
     logger.info(
       'Connection to the database has been established successfully.',
     );
-    await sequelize.sync({ force: false });
+
+    logger.info('Importing models...');
+
+    const { BookingHour, Clipp, Court } = await import(
+      '@/database/models/index.js'
+    );
+
+    logger.info('All models imported. Starting synchronization...');
+
+    const syncOrder = [
+      { name: 'Court', model: Court },
+      { name: 'BookingHour', model: BookingHour },
+      { name: 'Clipp', model: Clipp },
+    ];
+
+    for (const { name, model } of syncOrder) {
+      try {
+        logger.info(`Syncing ${name}...`);
+        await model.sync({ force: false, alter: false });
+        logger.info(`✅ ${name} synced successfully`);
+      } catch (error) {
+        logger.error(`❌ Failed to sync ${name}:`, error as Error);
+        logger.error('Error details:', (error as Error).message);
+        throw new Error(
+          `Failed to sync model ${name}: ${(error as Error).message}`,
+        );
+      }
+    }
+
     logger.info('Database synchronized successfully.');
   } catch (error) {
     logger.error('Unable to connect to the database:', error as Error);
