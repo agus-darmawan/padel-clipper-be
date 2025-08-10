@@ -1,5 +1,5 @@
 import { body } from 'express-validator';
-import Court from '@/database/models/Court';
+import { Court } from '@/database/models/index.js';
 
 const checkCourtNameExists = async (value: string): Promise<boolean> => {
   const existingCourt = await Court.findOne({

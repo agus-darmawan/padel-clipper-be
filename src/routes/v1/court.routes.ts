@@ -6,7 +6,7 @@ import {
   getCourtByIdController,
   updateCourtController,
 } from '@/controllers/court.controller.js';
-import { validationMiddleware } from '@/middleware/validation.middleware';
+import { validationMiddleware } from '@/middleware/validation.middleware.js';
 import {
   createCourtValidators,
   updateCourtValidators,

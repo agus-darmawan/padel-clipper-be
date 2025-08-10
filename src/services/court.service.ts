@@ -1,5 +1,5 @@
 import { Court } from '@/database/models/index.js';
-import { NotFoundError } from '@/utils/base.error';
+import { NotFoundError } from '@/utils/base.error.js';
 
 class CourtService {
   async createCourt(name: string): Promise<Court> {

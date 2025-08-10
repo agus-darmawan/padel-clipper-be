@@ -1,10 +1,10 @@
 {
   "info": {
-    "_postman_id": "patrol-be-api-collection",
-    "name": "Patrol BE API",
-    "description": "Complete API collection for testing Patrol BE endpoints including Courts, Booking Hours, and Clips management",
+    "_postman_id": "padel-clipper-be-api-collection",
+    "name": "Padel Clipper BE API",
+    "description": "Complete API collection for testing Padel Clipper BE endpoints including Courts, Booking Hours, and Clips management",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "_exporter_id": "patrol-be-api"
+    "_exporter_id": "padel-clipper-be-api"
   },
   "item": [
     {
@@ -16,9 +16,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/",
+              "raw": "{{base_url}}",
               "host": ["{{base_url}}"],
-              "path": [""]
+              "path": ["api", ""]
             },
             "description": "Basic health check endpoint to verify API is running"
           },
@@ -50,9 +50,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/v1/courts",
+              "raw": "{{base_url}}/api/v1/courts",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts"]
+              "path": ["api", "v1", "courts"]
             },
             "description": "Create a new court with a unique name"
           },
@@ -64,9 +64,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/courts",
+              "raw": "{{base_url}}/api/v1/courts",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts"]
+              "path": ["api", "v1", "courts"]
             },
             "description": "Retrieve all courts ordered by creation date (newest first)"
           },
@@ -78,9 +78,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/courts/{{court_id}}",
+              "raw": "{{base_url}}/api/v1/courts/{{court_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts", "{{court_id}}"]
+              "path": ["api", "v1", "courts", "{{court_id}}"]
             },
             "description": "Retrieve a specific court by its ID"
           },
@@ -106,9 +106,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/v1/courts/{{court_id}}",
+              "raw": "{{base_url}}/api/v1/courts/{{court_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts", "{{court_id}}"]
+              "path": ["api", "v1", "courts", "{{court_id}}"]
             },
             "description": "Update a court's information by ID"
           },
@@ -120,9 +120,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/courts/{{court_id}}",
+              "raw": "{{base_url}}/api/v1/courts/{{court_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts", "{{court_id}}"]
+              "path": ["api", "v1", "courts", "{{court_id}}"]
             },
             "description": "Delete a court by ID"
           },
@@ -154,9 +154,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/v1/booking-hours",
+              "raw": "{{base_url}}/api/v1/booking-hours",
               "host": ["{{base_url}}"],
-              "path": ["v1", "booking-hours"]
+              "path": ["api", "v1", "booking-hours"]
             },
             "description": "Create a new booking hour for a specific court"
           },
@@ -168,9 +168,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/booking-hours",
+              "raw": "{{base_url}}/api/v1/booking-hours",
               "host": ["{{base_url}}"],
-              "path": ["v1", "booking-hours"]
+              "path": ["api", "v1", "booking-hours"]
             },
             "description": "Retrieve all booking hours with court information, ordered by start date"
           },
@@ -182,9 +182,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/booking-hours/{{booking_hour_id}}",
+              "raw": "{{base_url}}/api/v1/booking-hours/{{booking_hour_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "booking-hours", "{{booking_hour_id}}"]
+              "path": ["api", "v1", "booking-hours", "{{booking_hour_id}}"]
             },
             "description": "Retrieve a specific booking hour by its ID with court information"
           },
@@ -210,9 +210,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/v1/booking-hours/{{booking_hour_id}}",
+              "raw": "{{base_url}}/api/v1/booking-hours/{{booking_hour_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "booking-hours", "{{booking_hour_id}}"]
+              "path": ["api", "v1", "booking-hours", "{{booking_hour_id}}"]
             },
             "description": "Update a booking hour's time slots by ID"
           },
@@ -224,9 +224,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/booking-hours/{{booking_hour_id}}",
+              "raw": "{{base_url}}/api/v1/booking-hours/{{booking_hour_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "booking-hours", "{{booking_hour_id}}"]
+              "path": ["api", "v1", "booking-hours", "{{booking_hour_id}}"]
             },
             "description": "Delete a booking hour by ID"
           },
@@ -261,9 +261,9 @@
               ]
             },
             "url": {
-              "raw": "{{base_url}}/v1/clips/upload",
+              "raw": "{{base_url}}/api/v1/clips/upload",
               "host": ["{{base_url}}"],
-              "path": ["v1", "clips", "upload"]
+              "path": ["api", "v1", "clips", "upload"]
             },
             "description": "Upload a video clip for a specific booking hour. Accepts mp4, webm, ogg formats up to 5MB."
           },
@@ -275,9 +275,15 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/clips/bookingHour/{{booking_hour_id}}",
+              "raw": "{{base_url}}/api/v1/clips/bookingHour/{{booking_hour_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "clips", "bookingHour", "{{booking_hour_id}}"]
+              "path": [
+                "api",
+                "v1",
+                "clips",
+                "bookingHour",
+                "{{booking_hour_id}}"
+              ]
             },
             "description": "Retrieve all clips for a specific booking hour, ordered by creation date (newest first)"
           },
@@ -289,9 +295,10 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/clips/court/{{court_id}}/clipp/{{clip_id}}",
+              "raw": "{{base_url}}/api/v1/clips/court/{{court_id}}/clipp/{{clip_id}}",
               "host": ["{{base_url}}"],
               "path": [
+                "api",
                 "v1",
                 "clips",
                 "court",
@@ -310,9 +317,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/clips/clipp/{{clip_id}}",
+              "raw": "{{base_url}}/api/v1/clips/clipp/{{clip_id}}",
               "host": ["{{base_url}}"],
-              "path": ["v1", "clips", "clipp", "{{clip_id}}"]
+              "path": ["api", "v1", "clips", "clipp", "{{clip_id}}"]
             },
             "description": "Retrieve a specific clip by its ID"
           },
@@ -330,9 +337,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/uploads/videos/{{video_filename}}",
+              "raw": "{{base_url}}/api/uploads/videos/{{video_filename}}",
               "host": ["{{base_url}}"],
-              "path": ["uploads", "videos", "{{video_filename}}"]
+              "path": ["api", "uploads", "videos", "{{video_filename}}"]
             },
             "description": "Access uploaded video files directly via static file serving"
           },
@@ -350,9 +357,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/non-existent-route",
+              "raw": "{{base_url}}/api/non-existent-route",
               "host": ["{{base_url}}"],
-              "path": ["non-existent-route"]
+              "path": ["api", "non-existent-route"]
             },
             "description": "Test 404 error handling for non-existent routes"
           },
@@ -378,9 +385,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/v1/courts",
+              "raw": "{{base_url}}/api/v1/courts",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts"]
+              "path": ["api", "v1", "courts"]
             },
             "description": "Test validation error with court name too short (less than 3 characters)"
           },
@@ -406,9 +413,9 @@
               }
             },
             "url": {
-              "raw": "{{base_url}}/v1/booking-hours",
+              "raw": "{{base_url}}/api/v1/booking-hours",
               "host": ["{{base_url}}"],
-              "path": ["v1", "booking-hours"]
+              "path": ["api", "v1", "booking-hours"]
             },
             "description": "Test validation error with non-existent court ID and invalid date range"
           },
@@ -420,9 +427,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/v1/courts/999999",
+              "raw": "{{base_url}}/api/v1/courts/999999",
               "host": ["{{base_url}}"],
-              "path": ["v1", "courts", "999999"]
+              "path": ["api", "v1", "courts", "999999"]
             },
             "description": "Test 404 error for non-existent court ID"
           },
@@ -467,7 +474,7 @@
           "    const responseJson = pm.response.json();",
           "    ",
           "    if (responseJson.data && responseJson.data.id) {",
-          "        const endpoint = pm.request.url.getPath().split('/')[2];",
+          "        const endpoint = pm.request.url.getPath().split('/')[3];",
           "        ",
           "        if (endpoint === 'courts') {",
           "            pm.globals.set('court_id', responseJson.data.id);",
@@ -485,8 +492,8 @@
   "variable": [
     {
       "key": "base_url",
-      "value": "http://localhost:3000/api",
-      "description": "Base URL for the Patrol BE API"
+      "value": "http://localhost:3000",
+      "description": "Base URL for the Padel Clipper BE API"
     },
     {
       "key": "court_id",

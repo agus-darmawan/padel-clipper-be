@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import CourtService from '@/services/court.service.js';
-import { handleError } from '@/utils/error.handler';
+import { handleError } from '@/utils/error.handler.js';
 
 const service = new CourtService();
 

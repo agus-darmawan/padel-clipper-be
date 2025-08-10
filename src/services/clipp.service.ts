@@ -1,5 +1,5 @@
 import { BookingHour, Clipp } from '@/database/models/index.js';
-import { NotFoundError } from '@/utils/base.error';
+import { NotFoundError } from '@/utils/base.error.js';
 
 class ClippService {
   async uploadClippFile(

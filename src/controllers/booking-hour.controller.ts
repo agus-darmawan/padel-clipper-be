@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import BookingHourService from '@/services/booking-hour.service.js';
-import { handleError } from '@/utils/error.handler';
+import { handleError } from '@/utils/error.handler.js';
 
 const service = new BookingHourService();
 

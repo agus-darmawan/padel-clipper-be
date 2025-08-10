@@ -1,6 +1,6 @@
 import type { Request, Response } from 'express';
 import ClippService from '@/services/clipp.service.js';
-import { handleError } from '@/utils/error.handler';
+import { handleError } from '@/utils/error.handler.js';
 import createUpload from '@/utils/file.upload.js';
 
 const service = new ClippService();
