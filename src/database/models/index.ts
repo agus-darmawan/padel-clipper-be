@@ -1,6 +1,6 @@
-import BookingHour from './BookingHour';
-import Clipp from './Clipp';
-import Court from './Court';
+import BookingHour from './BookingHour.js';
+import Clipp from './Clipp.js';
+import Court from './Court.js';
 
 // Relasi antara BookingHour dan Court
 BookingHour.belongsTo(Court, { foreignKey: 'courtId', as: 'court' });
