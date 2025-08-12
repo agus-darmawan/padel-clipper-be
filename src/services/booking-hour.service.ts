@@ -28,6 +28,21 @@ class BookingHourService {
     return bookingHours;
   }
 
+  async getBookingHoursByCourtId(courtId: number): Promise<BookingHour[]> {
+    const court = await Court.findByPk(courtId);
+    if (!court) {
+      throw new NotFoundError('Court not found');
+    }
+
+    const bookingHours = await BookingHour.findAll({
+      where: { courtId },
+      include: [{ model: Court, as: 'court' }],
+      order: [['dateStart', 'ASC']],
+    });
+
+    return bookingHours;
+  }
+
   async getBookingHourById(id: number): Promise<BookingHour> {
     const bookingHour = await BookingHour.findByPk(id, {
       include: [{ model: Court, as: 'court' }],

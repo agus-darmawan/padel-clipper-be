@@ -5,6 +5,7 @@ import {
   getAllBookingHoursController,
   getBookingHourByIdController,
   updateBookingHourController,
+  getBookingHoursByCourtIdController,
 } from '@/controllers/booking-hour.controller.js';
 import { validationMiddleware } from '@/middleware/validation.middleware.js';
 import {
@@ -22,6 +23,7 @@ router.post(
   createBookingHourController,
 );
 router.get('/', getAllBookingHoursController);
+router.get('/court/:courtId', getBookingHoursByCourtIdController);
 router.get(
   '/:id',
   idParamValidator,

@@ -58,6 +58,23 @@ export const getBookingHourByIdController = async (
   }
 };
 
+export const getBookingHoursByCourtIdController = async (
+  req: Request,
+  res: Response,
+) => {
+  try {
+    const courtId = parseInt(req.params.courtId || '0');
+    const result = await service.getBookingHoursByCourtId(courtId);
+    res.status(200).json({
+      message: `All booking hours for court id ${courtId} retrieved successfully`,
+      data: result,
+      success: true,
+    });
+  } catch (error) {
+    handleError(error, res);
+  }
+};
+
 export const updateBookingHourController = async (
   req: Request,
   res: Response,
