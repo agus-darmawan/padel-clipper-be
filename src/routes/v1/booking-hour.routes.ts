@@ -4,8 +4,8 @@ import {
   deleteBookingHourController,
   getAllBookingHoursController,
   getBookingHourByIdController,
-  updateBookingHourController,
   getBookingHoursByCourtIdController,
+  updateBookingHourController,
 } from '@/controllers/booking-hour.controller.js';
 import { validationMiddleware } from '@/middleware/validation.middleware.js';
 import {

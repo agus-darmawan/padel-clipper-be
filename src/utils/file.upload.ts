@@ -38,7 +38,7 @@ const createUpload = (uploadPath: string, allowedTypes: string[]) => {
     storage: storage(uploadPath),
     fileFilter,
     limits: {
-      fileSize: 5 * 1024 * 1024, // 5 MB
+      fileSize: 200 * 1024 * 1024, // 5 MB
     },
   });
 };
